@@ -1,0 +1,2 @@
+automatic-start-up=false
+can-users-shutdown-on-automatic-start=false
