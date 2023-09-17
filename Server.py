@@ -6,8 +6,9 @@ import time
 
 REQUEST_SERVER_UP = 1
 REQUEST_SERVER_DOWN = 2
+REQUEST_SERVER_STATUS = 3
 
-VERSION = '0.08'
+VERSION = '0.09'
 
 def get_choice(prompt):
     return input(prompt)
@@ -69,6 +70,8 @@ def run(client_prem):
 
         result_message = b''
 
+
+
         if request == REQUEST_SERVER_UP and not IS_SERVER_UP:
             result_message = b'Sending Server Up'
             si = subprocess.STARTUPINFO()
@@ -83,6 +86,11 @@ def run(client_prem):
             subprocess.Popen(command)
 
             IS_SERVER_UP = False
+        elif request == REQUEST_SERVER_STATUS:
+            if IS_SERVER_UP:
+                result_message = b'Server Up'
+            else:
+                result_message = b'Server Down'
         else:
             result_message = b'Request Rejected | Clients cannot shutdown or server is off | Or Server is already up'
 

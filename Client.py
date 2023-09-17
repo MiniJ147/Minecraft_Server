@@ -1,6 +1,6 @@
 import socket
 
-VERSION = '0.07'
+VERSION = '0.08'
 
 def get_choice(prompt):
     return input(prompt)
@@ -36,7 +36,7 @@ def init_data_in_file():
     f.close()
 def run():
     port,ip,name = load_data_from_file()
-    request = int(input("[1] Sever Up | [2]  Server Down\n>>> "))
+    request = int(input("[1] Sever Up | [2]  Server Down | [3] Server Status\n>>> "))
 
     s = socket.socket()
     s.connect((ip,port))
